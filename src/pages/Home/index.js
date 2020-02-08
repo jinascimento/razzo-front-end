@@ -1,10 +1,27 @@
-import React from 'react';
-import { Container } from './style';
+import React, { useEffect, useState } from 'react';
+
+import api from '../../services/api';
+import { Container, ArticlesList, ArticleItem } from './style';
 
 const Home = () => {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    async function loadArticles() {
+      const response = await api.get('/articles');
+      setArticles(response.data);
+    }
+
+    loadArticles();
+  }, []);
+
   return (
     <Container>
-      <h1>Home</h1>
+      <ArticlesList>
+        {articles.map(article => (
+          <ArticleItem key={article.id}>{article.title}</ArticleItem>
+        ))}
+      </ArticlesList>
     </Container>
   );
 };

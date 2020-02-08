@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import Colors from './colors';
 
 export default createGlobalStyle`
  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
@@ -10,7 +11,7 @@ export default createGlobalStyle`
   }  
   
   body {
-    background: #EFF3F8;
+    background: ${Colors.lightBlue};
     -webkit-font-smoothing: antialiased;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

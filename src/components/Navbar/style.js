@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
+import Colors from '../../styles/colors';
 
 export const Container = styled.div`
   display: flex;
   padding-top: 10px;
-  background: #ffffff;
+  background: ${Colors.white};
   grid-area: sidenav;
   flex-direction: row;
   justify-content: space-between;
@@ -27,7 +28,7 @@ export const Img = styled.img`
 
 export const MenuIcon = styled(FaBars)`
   margin-right: 10px;
-  color: rgba(176, 177, 187, 1);
+  color: ${Colors.darkBlue};
   @media (min-width: 768px) {
     display: none;
   }
