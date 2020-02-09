@@ -10,6 +10,7 @@ import {
   DataArticle,
   CheckIcon,
   FilterIcon,
+  PlusIcon,
 } from './style';
 import Colors from '../../styles/colors';
 
@@ -28,7 +29,7 @@ const Home = () => {
   return (
     <Container>
       <ContainerTitle>
-        <span style={{ FontSize: 16 }}>Meus artigos</span>
+        <span style={{ fontSize: 18 }}>Meus artigos</span>
         <div style={{ color: Colors.darkBlue, display: 'flex' }}>
           <FilterIcon size={18} />
           Mais novos primeiros
@@ -50,6 +51,9 @@ const Home = () => {
           </>
         ))}
       </ArticlesList>
+      <div style={{ textAlign: 'center' }}>
+        <PlusIcon size={36} />
+      </div>
     </Container>
   );
 };

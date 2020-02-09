@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Colors from '../../styles/colors';
-import { FaCheckCircle, FaFilter } from 'react-icons/fa';
+import { FaCheckCircle, FaFilter, FaPlusCircle } from 'react-icons/fa';
 
 export const Container = styled.div`
   grid-area: main;
@@ -45,4 +45,10 @@ export const CheckIcon = styled(FaCheckCircle)`
 
 export const FilterIcon = styled(FaFilter)`
   margin-right: 15px;
+`;
+
+export const PlusIcon = styled(FaPlusCircle)`
+  position: fixed;
+  bottom: 20px;
+  color: ${Colors.purple};
 `;
