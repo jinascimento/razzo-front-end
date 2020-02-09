@@ -14,14 +14,12 @@ export default createGlobalStyle`
     background: ${Colors.lightBlue};
     -webkit-font-smoothing: antialiased;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    font-family: Verdana, Geneva, sans-serif;
     -moz-osx-font-smoothing: grayscale;
   }
   
   body, input, button {
-    font: 14px Roboto, sans-serif;
+    font: 12px Roboto, sans-serif;
   }
   
     //max-width: 1020px;
