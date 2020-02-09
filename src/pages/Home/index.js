@@ -52,7 +52,7 @@ const Home = () => {
         ))}
       </ArticlesList>
       <div style={{ textAlign: 'center' }}>
-        <PlusIcon size={36} />
+        <PlusIcon size={40} />
       </div>
     </Container>
   );

@@ -14,7 +14,7 @@ export const ArticleItem = styled.li`
   display: flex;
   height: 80px;
   margin: 0 20px;
-  justify-content: center;
+  //justify-content: center;
   align-items: center;
 `;
 
@@ -35,12 +35,13 @@ export const Line = styled.hr`
 export const DataArticle = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 5;
+  //flex: 5;
 `;
 
 export const CheckIcon = styled(FaCheckCircle)`
   color: ${Colors.darkBlue};
-  flex: 1;
+  margin-right: 15px;
+  //flex: 1;
 `;
 
 export const FilterIcon = styled(FaFilter)`

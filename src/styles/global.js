@@ -49,11 +49,16 @@ export default createGlobalStyle`
           grid-template-columns: repeat(4, 1fr);
           grid-template-areas:
                   "sidenav main main main";
+          height: 100vh;
       }
 
   }
   
   button {
+    cursor: pointer;
+  }
+  
+  svg {
     cursor: pointer;
   }
 `;
