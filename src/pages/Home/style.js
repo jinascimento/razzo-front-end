@@ -5,16 +5,22 @@ import { FaCheckCircle, FaFilter, FaPlusCircle } from 'react-icons/fa';
 export const Container = styled.div`
   grid-area: main;
   margin: 0 10px;
+
+  ul {
+    list-style: none;
+  }
+
+  hr {
+    border: 1px solid;
+    color: ${Colors.grey};
+  }
+
 `;
 
-export const ArticlesList = styled.ul`
-`;
-
-export const ArticleItem = styled.li`
+export const ArticleData = styled.div`
   display: flex;
   height: 80px;
   margin: 0 20px;
-  //justify-content: center;
   align-items: center;
 `;
 
@@ -25,11 +31,6 @@ export const ContainerTitle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-`;
-
-export const Line = styled.hr`
-  border: 1px solid;
-  color: ${Colors.grey};
 `;
 
 export const DataArticle = styled.div`

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input, Textarea } from '@rocketseat/unform';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
 import { Container, ModalContainer } from './style';
@@ -13,13 +14,15 @@ const Modal = ({ isActive, children, title, handleClose, loadArticles }) => {
     author: Yup.string().required('Título é obrigátorio'),
   });
 
-  async function handleAddArticle(data) {
+  async function handleAddArticle(data, { resetForm }) {
     try {
       await api.post('/articles', data);
+      toast.success('Boa, artigo adicionado com sucesso!');
       loadArticles();
       handleClose();
+      resetForm();
     } catch (e) {
-      alert('Erro ao criar o artigo, verifique os dados!');
+      toast.error('Erro ao criar o artigo, verifique os dados!');
     }
   }
 

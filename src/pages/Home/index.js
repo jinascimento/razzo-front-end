@@ -3,20 +3,18 @@ import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import {
   Container,
-  ArticlesList,
-  ArticleItem,
   ContainerTitle,
-  Line,
   DataArticle,
   CheckIcon,
   FilterIcon,
   PlusIcon,
+  ArticleData,
 } from './style';
 import Colors from '../../styles/colors';
 import Modal from '../../components/Modal';
 import useModal from '../../components/Modal/useModal';
 
-const Home = () => {
+export default function Home() {
   const [articles, setArticles] = useState([]);
   const [itemModalOpen, setItemModalOpen, toggleModal] = useModal();
 
@@ -38,22 +36,21 @@ const Home = () => {
           Mais novos primeiros
         </div>
       </ContainerTitle>
-
-      <ArticlesList>
+      <ul>
         {articles.map(article => (
-          <>
-            <Line />
-            <ArticleItem key={article._id}>
+          <li key={String(article._id)}>
+            <ArticleData>
               <CheckIcon size={18} />
               <DataArticle>
                 <span style={{ color: Colors.darkBlue }}>{article.author}</span>
                 <strong>{article.title}</strong>
                 <span style={{ color: Colors.darkBlue }}>10/10/2018</span>
               </DataArticle>
-            </ArticleItem>
-          </>
+            </ArticleData>
+            <hr />
+          </li>
         ))}
-      </ArticlesList>
+      </ul>
       <div style={{ textAlign: 'center' }}>
         <PlusIcon size={40} onClick={toggleModal} />
       </div>
@@ -64,6 +61,4 @@ const Home = () => {
       />
     </Container>
   );
-};
-
-export default Home;
+}

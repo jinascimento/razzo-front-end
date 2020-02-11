@@ -1,4 +1,7 @@
 import React from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 import {
   Container,
   Img,
@@ -49,6 +52,7 @@ const Header = () => {
         </MenuBox>
       </Menu>
       <MenuIcon size={18} />
+      <ToastContainer />
     </Container>
   );
 };
