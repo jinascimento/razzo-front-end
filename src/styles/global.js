@@ -21,9 +21,7 @@ export default createGlobalStyle`
   body, input, button {
     font: 12px Roboto, sans-serif;
   }
-  
-    //max-width: 1020px;
-    
+
   @media (max-width: 640px) {
       #root {
           margin: 0 auto;

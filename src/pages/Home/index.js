@@ -13,9 +13,12 @@ import {
   PlusIcon,
 } from './style';
 import Colors from '../../styles/colors';
+import Modal from '../../components/Modal';
+import useModal from '../../components/Modal/useModal';
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
+  const [itemModalOpen, setItemModalOpen, toggleModal] = useModal();
 
   useEffect(() => {
     async function loadArticles() {
@@ -40,7 +43,7 @@ const Home = () => {
         {articles.map(article => (
           <>
             <Line />
-            <ArticleItem key={article.id}>
+            <ArticleItem key={article._id}>
               <CheckIcon size={18} />
               <DataArticle>
                 <span style={{ color: Colors.darkBlue }}>{article.author}</span>
@@ -52,8 +55,12 @@ const Home = () => {
         ))}
       </ArticlesList>
       <div style={{ textAlign: 'center' }}>
-        <PlusIcon size={40} />
+        <PlusIcon size={40} onClick={toggleModal} />
       </div>
+      <Modal
+        isActive={itemModalOpen}
+        handleClose={() => setItemModalOpen(false)}
+      />
     </Container>
   );
 };
