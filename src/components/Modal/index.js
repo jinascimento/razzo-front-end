@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { Container, ModalContainer } from './style';
 import api from '../../services/api';
 
-const Modal = ({ isActive, children, title, handleClose }) => {
+const Modal = ({ isActive, children, title, handleClose, loadArticles }) => {
   const schema = Yup.object().shape({
     title: Yup.string().required('Título é obrigátorio'),
     description: Yup.string().required('Descrição é obrigátoria'),
@@ -16,6 +16,7 @@ const Modal = ({ isActive, children, title, handleClose }) => {
   async function handleAddArticle(data) {
     try {
       await api.post('/articles', data);
+      loadArticles();
       handleClose();
     } catch (e) {
       alert('Erro ao criar o artigo, verifique os dados!');

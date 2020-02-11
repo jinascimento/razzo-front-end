@@ -20,12 +20,12 @@ const Home = () => {
   const [articles, setArticles] = useState([]);
   const [itemModalOpen, setItemModalOpen, toggleModal] = useModal();
 
-  useEffect(() => {
-    async function loadArticles() {
-      const response = await api.get('/articles');
-      setArticles(response.data);
-    }
+  async function loadArticles() {
+    const response = await api.get('/articles');
+    setArticles(response.data);
+  }
 
+  useEffect(() => {
     loadArticles();
   }, []);
 
@@ -60,6 +60,7 @@ const Home = () => {
       <Modal
         isActive={itemModalOpen}
         handleClose={() => setItemModalOpen(false)}
+        loadArticles={loadArticles}
       />
     </Container>
   );
