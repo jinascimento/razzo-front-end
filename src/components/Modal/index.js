@@ -1,13 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Form, Input, Textarea } from '@rocketseat/unform';
+import * as Yup from 'yup';
 
 import { Container, ModalContainer } from './style';
 import api from '../../services/api';
 
 const Modal = ({ isActive, children, title, handleClose }) => {
-  async function handleAddArticle(data) {
-    const response = await api.post('/articles', data);
+  const schema = Yup.object().shape({
+    title: Yup.string().required('Título é obrigátorio'),
+    description: Yup.string().required('Descrição é obrigátoria'),
+    category: Yup.string().required('Categoria é obrigátoria'),
+    author: Yup.string().required('Título é obrigátorio'),
+  });
 
+  async function handleAddArticle(data) {
+    try {
+      await api.post('/articles', data);
+      handleClose();
+    } catch (e) {
+      alert('Erro ao criar o artigo, verifique os dados!');
+    }
   }
 
   return (
@@ -21,7 +33,8 @@ const Modal = ({ isActive, children, title, handleClose }) => {
             Adicionar novo artigo
           </span>
 
-          <Form initialData={{}} onSubmit={handleAddArticle}>
+          <Form initialData={{}} schema={schema} onSubmit={handleAddArticle}>
+            <Input type="text" placeholder="Autor" name="author" />
             <Input type="text" placeholder="Título" name="title" />
             <Input type="text" placeholder="Descrição" name="description" />
             <Textarea type="text" placeholder="Categoria" name="category" />
