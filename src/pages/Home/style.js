@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import Colors from '../../styles/colors';
-import { FaCheckCircle, FaFilter, FaPlusCircle } from 'react-icons/fa';
+import {
+  FaCheckCircle,
+  FaFilter,
+  FaPlusCircle,
+  FaTrashAlt,
+  FaEdit,
+  FaClone,
+} from 'react-icons/fa';
 
 export const Container = styled.div`
   grid-area: main;
@@ -8,6 +15,18 @@ export const Container = styled.div`
 
   ul {
     list-style: none;
+
+    .article-summary {
+      display: flex;
+      height: 80px;
+      margin: 0 20px;
+      align-items: center;
+
+      .data-article {
+        display: flex;
+        flex-direction: column;
+      }
+    }
   }
 
   hr {
@@ -15,34 +34,30 @@ export const Container = styled.div`
     color: ${Colors.grey};
   }
 
-`;
+  .container-title {
+    height: 175px;
+    margin: 10px 20px;
+    font-weight: 600;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
-export const ArticleData = styled.div`
-  display: flex;
-  height: 80px;
-  margin: 0 20px;
-  align-items: center;
-`;
+    span {
+      font-size: 18px;
+    }
 
-export const ContainerTitle = styled.div`
-  height: 85px;
-  margin: 10px 20px;
-  font-weight: 600;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-
-export const DataArticle = styled.div`
-  display: flex;
-  flex-direction: column;
-  //flex: 5;
+    div {
+      color: ${Colors.darkBlue};
+      display: flex;
+      margin-top: 15px;
+    }
+  }
 `;
 
 export const CheckIcon = styled(FaCheckCircle)`
   color: ${Colors.darkBlue};
   margin-right: 15px;
-  //flex: 1;
 `;
 
 export const FilterIcon = styled(FaFilter)`
@@ -53,4 +68,21 @@ export const PlusIcon = styled(FaPlusCircle)`
   position: fixed;
   bottom: 20px;
   color: ${Colors.purple};
+`;
+
+export const Actions = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const TrashIcon = styled(FaTrashAlt)`
+  margin-right: 5px;
+`;
+
+export const EditIcon = styled(FaEdit)`
+  margin-right: 5px;
+`;
+
+export const CloneIcon = styled(FaClone)`
+  margin-right: 5px;
 `;

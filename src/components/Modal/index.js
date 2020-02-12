@@ -22,7 +22,7 @@ const Modal = ({ isActive, children, title, handleClose, loadArticles }) => {
       handleClose();
       resetForm();
     } catch (e) {
-      toast.error('Erro ao criar o artigo, verifique os dados!');
+      toast.error('Desculpe, erro ao criar o artigo, verifique os dados!');
     }
   }
 
