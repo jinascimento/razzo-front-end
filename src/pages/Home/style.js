@@ -7,11 +7,13 @@ import {
   FaTrashAlt,
   FaEdit,
   FaClone,
+  FaTimesCircle,
 } from 'react-icons/fa';
 
 export const Container = styled.div`
   grid-area: main;
   margin: 0 10px;
+  height: 100vh;
 
   ul {
     list-style: none;
@@ -30,6 +32,11 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
+    .filter {
+      display: flex;
+      justify-content: space-between;
+    }
 
     span {
       font-size: 18px;
@@ -103,9 +110,14 @@ export const TrashIcon = styled(FaTrashAlt)`
 `;
 
 export const EditIcon = styled(FaEdit)`
+  display: ${props => (props.display === 'true' ? 'block' : 'none')};
   margin-right: 5px;
 `;
 
 export const CloneIcon = styled(FaClone)`
   margin-right: 5px;
+`;
+
+export const CancelIcon = styled(FaTimesCircle)`
+  display: ${props => (props.display === 'true' ? 'block' : 'none')};
 `;

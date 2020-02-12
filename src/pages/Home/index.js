@@ -10,6 +10,7 @@ import {
   TrashIcon,
   EditIcon,
   CloneIcon,
+  CancelIcon,
   Actions,
   ArticleSummary,
 } from './style';
@@ -34,13 +35,22 @@ export default function Home() {
       setArticleCheckedCount(articleCheckedCount + 1);
     } else {
       let index;
-      checkboxes.filter((value, i, arr) => {
+      checkboxes.filter((value, i) => {
         index = value._id === s._id ? i : undefined;
       });
       checkboxes.splice(index, 1);
       setCheckboxes(checkboxes);
       setArticleCheckedCount(articleCheckedCount - 1);
     }
+  }
+
+  function handleEditArticle() {
+    toggleModal();
+  }
+
+  function cancelChecked() {
+    setCheckboxes([]);
+    setArticleCheckedCount(0);
   }
 
   async function handleDestroyArticles() {
@@ -64,16 +74,29 @@ export default function Home() {
     <Container>
       <div className="container-title">
         <span>Meus artigos</span>
-        <div>
-          <FilterIcon size={18} />
-          Mais novos primeiros
+        <div className="filter">
+          <div>
+            <FilterIcon size={18} />
+            Mais novos primeiros
+          </div>
+          <div>
+            <CancelIcon
+              size={18}
+              display={(articleCheckedCount > 0).toString()}
+              onClick={() => cancelChecked()}
+            />
+          </div>
         </div>
         <hr />
         <Actions>
           <div>{articleCheckedCount} artigo selecionado</div>
           <div>
             <CloneIcon size={16} />
-            <EditIcon size={16} />
+            <EditIcon
+              size={16}
+              display={(articleCheckedCount === 1).toString()}
+              onClick={() => handleEditArticle()}
+            />
             <TrashIcon onClick={() => handleDestroyArticles()} size={16} />
           </div>
         </Actions>
@@ -118,6 +141,7 @@ export default function Home() {
       <Modal
         isActive={itemModalOpen}
         handleClose={() => setItemModalOpen(false)}
+        articleEdit={checkboxes[0] ? checkboxes[0] : {}}
         loadArticles={loadArticles}
       />
     </Container>

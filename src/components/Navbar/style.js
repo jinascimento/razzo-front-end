@@ -5,6 +5,7 @@ import Colors from '../../styles/colors';
 export const Container = styled.div`
   display: flex;
   padding-top: 15px;
+  padding-bottom: 15px;
   background: ${Colors.white};
   grid-area: sidenav;
   flex-direction: row;

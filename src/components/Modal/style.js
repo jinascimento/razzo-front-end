@@ -19,7 +19,7 @@ export const ModalContainer = styled.div`
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border-radius: 15px;
     width: 80%;
 
     .close-modal {
