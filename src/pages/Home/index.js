@@ -11,6 +11,7 @@ import {
   EditIcon,
   CloneIcon,
   Actions,
+  ArticleSummary,
 } from './style';
 import Colors from '../../styles/colors';
 import Modal from '../../components/Modal';
@@ -32,8 +33,12 @@ export default function Home() {
       setCheckboxes(checkboxes.concat(s));
       setArticleCheckedCount(articleCheckedCount + 1);
     } else {
-      const index = checkboxes.findIndex(ch => ch._id === s._id);
-      setCheckboxes(checkboxes.splice(index, 1));
+      let index;
+      checkboxes.filter((value, i, arr) => {
+        index = value._id === s._id ? i : undefined;
+      });
+      checkboxes.splice(index, 1);
+      setCheckboxes(checkboxes);
       setArticleCheckedCount(articleCheckedCount - 1);
     }
   }
@@ -82,8 +87,18 @@ export default function Home() {
               onChange={e => handleCheckbox(e, article)}
             />
             <label htmlFor={article._id}>
-              <div className="article-summary">
-                <CheckIcon size={18} />
+              <ArticleSummary
+                articleId={article._id}
+                checked={
+                  checkboxes.find(ch => ch._id === article._id) ? true : false
+                }
+              >
+                <CheckIcon
+                  size={18}
+                  checked={
+                    checkboxes.find(ch => ch._id === article._id) ? true : false
+                  }
+                />
                 <div className="data-article">
                   <span style={{ color: Colors.darkBlue }}>
                     {article.author}
@@ -91,7 +106,7 @@ export default function Home() {
                   <strong>{article.title}</strong>
                   <span style={{ color: Colors.darkBlue }}>10/10/2018</span>
                 </div>
-              </div>
+              </ArticleSummary>
             </label>
             <hr />
           </li>

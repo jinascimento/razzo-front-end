@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Colors from '../../styles/colors';
 import {
   FaCheckCircle,
@@ -15,18 +15,6 @@ export const Container = styled.div`
 
   ul {
     list-style: none;
-
-    .article-summary {
-      display: flex;
-      height: 80px;
-      margin: 0 20px;
-      align-items: center;
-
-      .data-article {
-        display: flex;
-        flex-direction: column;
-      }
-    }
   }
 
   hr {
@@ -53,11 +41,46 @@ export const Container = styled.div`
       margin-top: 15px;
     }
   }
+
+  input[type='checkbox'] {
+    opacity: 0;
+  }
+`;
+
+export const ArticleSummary = styled.div.attrs(props => ({
+  id: props.articleId,
+}))`
+  display: flex;
+  height: 80px;
+  margin: 0 20px;
+  padding: 0 15px;
+  align-items: center;
+  ${props =>
+    props.checked &&
+    css`
+      background: ${Colors.white};
+      position: relative;
+      box-shadow: 0 0 32px 1px #9954ff80;
+      border-radius: 15px;
+    `}
+
+  .data-article {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const CheckIcon = styled(FaCheckCircle)`
   color: ${Colors.darkBlue};
   margin-right: 15px;
+
+  ${props =>
+    props.checked &&
+    css`
+      color: ${Colors.purple};
+      width: 22px;
+      height: 22px;
+    `}
 `;
 
 export const FilterIcon = styled(FaFilter)`
