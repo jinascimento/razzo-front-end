@@ -12,7 +12,7 @@ const Modal = ({
   title,
   handleClose,
   loadArticles,
-  articleEdit,
+  article,
 }) => {
   const schema = Yup.object().shape({
     title: Yup.string().required('Título é obrigátorio'),
@@ -35,7 +35,7 @@ const Modal = ({
 
   async function handleUpdateArticle(data, { resetForm }) {
     try {
-      await api.put(`/articles/${articleEdit._id}`, data);
+      await api.put(`/articles/${article._id}`, data);
       toast.success('Boa, artigo atualizado com sucesso!');
       loadArticles();
       handleClose();
@@ -53,13 +53,17 @@ const Modal = ({
             &times;
           </span>
           <span style={{ fontSize: '18px', fontWeight: '600' }}>
-            {articleEdit ? 'Editar artigo' : 'Adicionar novo artigo'}
+            {article ? 'Editar artigo' : 'Adicionar novo artigo'}
           </span>
 
           <Form
-            initialData={articleEdit}
+            initialData={article}
             schema={schema}
-            onSubmit={articleEdit ? handleUpdateArticle : handleAddArticle}
+            onSubmit={
+              Object.entries(article).length > 1
+                ? handleUpdateArticle
+                : handleAddArticle
+            }
           >
             <Input type="text" placeholder="Autor" name="author" />
             <Input type="text" placeholder="Título" name="title" />

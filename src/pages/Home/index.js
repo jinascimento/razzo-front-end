@@ -23,6 +23,7 @@ export default function Home() {
   const [itemModalOpen, setItemModalOpen, toggleModal] = useModal();
   const [articleCheckedCount, setArticleCheckedCount] = useState(0);
   const [checkboxes, setCheckboxes] = useState([]);
+  const [article, setArticle] = useState({});
 
   async function loadArticles() {
     const response = await api.get('/articles');
@@ -45,6 +46,12 @@ export default function Home() {
   }
 
   function handleEditArticle() {
+    setArticle(checkboxes[0]);
+    toggleModal();
+  }
+
+  function handleAddArticle() {
+    setArticle({});
     toggleModal();
   }
 
@@ -141,12 +148,12 @@ export default function Home() {
         ))}
       </ul>
       <div style={{ textAlign: 'center' }}>
-        <PlusIcon size={40} onClick={toggleModal} />
+        <PlusIcon size={40} onClick={() => handleAddArticle()} />
       </div>
       <Modal
         isActive={itemModalOpen}
         handleClose={() => setItemModalOpen(false)}
-        articleEdit={checkboxes[0] ? checkboxes[0] : {}}
+        article={article}
         loadArticles={loadArticles}
       />
     </Container>
