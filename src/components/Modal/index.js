@@ -63,8 +63,8 @@ const Modal = ({
           >
             <Input type="text" placeholder="Autor" name="author" />
             <Input type="text" placeholder="Título" name="title" />
-            <Input type="text" placeholder="Descrição" name="description" />
-            <Textarea type="text" placeholder="Categoria" name="category" />
+            <Input type="text" placeholder="Categoria" name="category" />
+            <Textarea type="text" placeholder="Descrição" name="description" />
             <button type="submit">Salvar artigo</button>
           </Form>
         </div>

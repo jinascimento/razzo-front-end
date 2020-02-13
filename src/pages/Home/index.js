@@ -49,6 +49,10 @@ export default function Home() {
   }
 
   function cancelChecked() {
+    const checkbox = document.getElementsByClassName('check-article');
+    for (let item of checkbox) {
+      item.checked = false;
+    }
     setCheckboxes([]);
     setArticleCheckedCount(0);
   }
@@ -106,6 +110,7 @@ export default function Home() {
           <li key={String(article._id)}>
             <input
               type="checkbox"
+              className="check-article"
               id={article._id}
               onChange={e => handleCheckbox(e, article)}
             />

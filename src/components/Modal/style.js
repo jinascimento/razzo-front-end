@@ -49,7 +49,7 @@ export const ModalContainer = styled.div`
       color: ${Colors.black};
       margin: 0 0 10px;
       &::placeholder {
-        color: ${Colors.black};
+        color: ${Colors.darkGrey};
       }
     }
 

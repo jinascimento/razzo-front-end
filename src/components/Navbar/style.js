@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FaBars, FaFolder } from 'react-icons/fa';
 import Colors from '../../styles/colors';
 
@@ -12,6 +12,23 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 60px;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  ${props =>
+    props.opened &&
+    css`
+      height: 100vh;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    `};
 
   @media (min-width: 768px) {
     flex-direction: column;
@@ -39,7 +56,16 @@ export const MenuIcon = styled(FaBars)`
 `;
 
 export const Menu = styled.div`
+  ${props =>
+    props.opened &&
+    css`
+      display: block !important;
+      height: 100vh;
+      margin-left: 20px;
+    `};
+
   display: none;
+
   @media (min-width: 768px) {
     display: block;
     margin: 0 20px;

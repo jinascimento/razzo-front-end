@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
@@ -15,11 +15,20 @@ import {
 } from './style';
 
 const Header = () => {
+  const [opened, setOpened] = useState(false);
+
+  function openMenu() {
+    setOpened(!opened);
+  }
+
   return (
     <>
-      <Container>
-        <Img src="https://agenciarazzo.com.br/wp-content/uploads/2019/09/cropped-logo-agencia-razzo.png" />
-        <Menu>
+      <Container opened={opened}>
+        <div className="header">
+          <Img src="https://agenciarazzo.com.br/wp-content/uploads/2019/09/cropped-logo-agencia-razzo.png" />
+          <MenuIcon size={18} onClick={() => openMenu()} />
+        </div>
+        <Menu opened={opened}>
           <MenuBox>
             <MyDirectorButton>
               <FolderIcon size={16} /> Meu diretório
@@ -52,7 +61,7 @@ const Header = () => {
             </SubMenu>
           </MenuBox>
         </Menu>
-        <MenuIcon size={18} />
+        {/*<MenuIcon size={18} onClick={() => openMenu()} />*/}
       </Container>
       <ToastContainer />
     </>
